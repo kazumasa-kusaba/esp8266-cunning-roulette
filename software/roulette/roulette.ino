@@ -9,7 +9,7 @@
 
 static const char* VERSION_NAME = "esp8266-cunning-roulette v0.10";
 
-static const int A4988_RESET_PIN  = 16;
+static const int A4988_RESET_PIN  = 15;
 static const int A4988_SLEEP_PIN  = 0;
 static const int A4988_STEP_PIN   = 4;
 static const int A4988_DIR_PIN    = 5;
@@ -173,11 +173,12 @@ inline static void MoveStepperMotor(unsigned long steps)
 static void GoToSleepMode(void)
 {
   WiFi.mode(WIFI_OFF);
+  delay(500);
   wifi_set_opmode_current(NULL_MODE); 
   wifi_fpm_set_sleep_type(LIGHT_SLEEP_T); 
-  wifi_fpm_open();
-  gpio_pin_wakeup_enable(BUTTON_PIN, GPIO_PIN_INTR_HILEVEL); 
   wifi_fpm_set_wakeup_cb(CallbackAfterWakingUp);
+  gpio_pin_wakeup_enable(BUTTON_PIN, GPIO_PIN_INTR_LOLEVEL); 
+  wifi_fpm_open();
   wifi_fpm_do_sleep(0xFFFFFFF);
   delay(100);
 }
