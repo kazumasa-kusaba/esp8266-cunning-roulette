@@ -85,13 +85,16 @@ void loop()
   PowerOnStepperMotor();
 
   LOGGER_DEBUG("Waiting for the button to be released...");
-  while (digitalRead(BUTTON_PIN) == LOW) { }
+  while (digitalRead(BUTTON_PIN) == LOW) {
+    yield();
+  }
   LOGGER_INFO("The button was released");
 
   LOGGER_INFO("Start turning the needle");
   LOGGER_DEBUG("Looking for the position where the needle points at 0 steps...");
   while (digitalRead(LIMIT_SWITCH_PIN) == LOW) {
     MoveStepperMotor(1);
+    yield();
   }
   SetStep(0);
 
@@ -99,6 +102,7 @@ void loop()
   while (digitalRead(BUTTON_PIN) == HIGH) {
     MoveStepperMotor(STEP);
     AddStep(STEP);
+    yield();
   }
 
   // ----------------------------- CAUTION!! ----------------------------- //
@@ -119,7 +123,9 @@ void loop()
   delay(3); 
 
   LOGGER_DEBUG("Waiting for the button to be released...");
-  while (digitalRead(BUTTON_PIN) == LOW) { }
+  while (digitalRead(BUTTON_PIN) == LOW) {
+    yield();
+  }
   LOGGER_DEBUG("The button was released");
 }
 
