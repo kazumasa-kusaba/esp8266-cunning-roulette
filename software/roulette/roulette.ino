@@ -23,7 +23,7 @@ static const unsigned int  MOTOR_STEPS           = 200U;
 static const unsigned int  MICROSTEPS            = 16U;   // 1 or 2 or 4 or 8 or 16
 static const unsigned long STEP                  = 1UL;
 static const unsigned int  PULSE_INTERVAL_US     = 3U;
-static const unsigned int  WAIT_TIME_PER_STEP_US = 156U;  // = (1000 * 1000 * 60) / (RPM * MOTOR_STEPS * MICROSTEPS);
+static const unsigned int  WAIT_TIME_PER_STEP_US = 300U;   // = (1000 * 1000 * 60) / (RPM * MOTOR_STEPS * MICROSTEPS);
 
 struct RouletteArea {
   unsigned char start_step;
