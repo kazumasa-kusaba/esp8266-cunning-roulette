@@ -36,11 +36,12 @@ struct RouletteArea {
 //          * Overlapping areas are not allowed.
 //          * The array lengths of zero are not allowed.
 static const RouletteArea AREAS_WHERE_THE_NEEDLE_CAN_STOP[] = {
-  {   0,   3 }, //   0 degree ~   5 degree
-  {  48,  53 }, //  85 degree ~  95 degree
-  {  98, 103 }, // 175 degree ~ 185 degree
-  { 148, 153 }, // 265 degree ~ 275 degree
-  { 198, 200 }, // 355 degree ~ 359 degree
+  { 7,   18 },  //  12 degree ~  33 degree
+  { 41,  53 },  //  73 degree ~  95 degree
+  { 76,  82 },  // 137 degree ~ 148 degree
+  { 111, 122 }, // 200 degree ~ 220 degree
+  { 144, 156 }, // 260 degree ~ 280 degree
+  { 183, 192 }, // 330 degree ~ 345 degree
 };
 
 static unsigned int g_step = 0;
